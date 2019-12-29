@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+
+  db:
+    container_name: db
+    image: postgres:9.6
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=django_db
+    ports:
+      - "5432:5432"
+
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"
+
+  wkhtmltopdf:
+    container_name: wkhtmltopdf
+    image: openlabs/docker-wkhtmltopdf-aas
+    restart: always
+    ports:
+      - "81:80"
+
+
